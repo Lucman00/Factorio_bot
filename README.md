@@ -3,7 +3,7 @@
 
 A Discord bot for managing Factorio game servers via RCON with real-time status monitoring.
 
-![Control Panel Example](https://imgur.com/gallery/control-panel-example-77Cf6hF)
+<img width="556" height="260" alt="Image" src="https://github.com/user-attachments/assets/046b4ea0-ee49-4937-9bdd-12185b37c1f3" />
 ## Features
 
 - **Server Control**:
@@ -46,7 +46,7 @@ cd factorio-discord-bot
 
 #### Method 2: Using the zip
 
-1.  [Download the zip](github.com/lucman00/factorio_bot/archive/refs/heads/main.zip)
+1.  [Download the zip](https://github.com/Lucman00/Factorio_bot/archive/refs/heads/main.zip)
 2. Put the .zip file where you want your bot to be
 3. extract the .zip file
 ___
