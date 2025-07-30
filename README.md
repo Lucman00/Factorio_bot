@@ -75,3 +75,12 @@ In the last step you will have to open the .env and put in your
 discord token, discord channel id, rcon ip ("rcon_host"),
 rcon_password, the rcon port(both of these HAVE to be the same as in
 the bat file) and lastly your server_path. 
+
+
+
+## Disclaimer, Feedback and suggestions
+First of all, this is my first ever real project and first time making a discord bot. 
+A LOT of it was done with AI on my second monitor and often times copy-paste from it.
+
+If you have any Feedback, suggestions and or problems with the Bot, you can add me on Discord at ```luca1811```.
+Just make sure you mention that it is about the bot, i've been getting a lot of art scam DMs
