@@ -41,17 +41,18 @@ Then you can download the bot itself
 #### Method 1: Using Git Clone (*Recommended*)
  ```bash
 git clone https://github.com/Lucman00/Factorio_bot.git
-cd factorio-discord-bot```
+cd factorio-discord-bot
+```
 
 #### Method 2: Using the zip
 
 1.  [Download the zip](github.com/lucman00/factorio_bot/archive/refs/heads/main.zip)
 2. Put the .zip file where you want your bot to be
 3. extract the .zip file
+___
 
-
-once you have the archive extracted, it should look something like this
-
+once you have the archive extracted (or the cloned folder), it should look something like this
+```
 Factorio_bot
 │
 ├──factorio_bot
@@ -69,7 +70,7 @@ Factorio_bot
 ├──.env    [this is the file you'll have to put your discord token and directory into]
 ├──main.py [this is the file you'll be running]
 └──README.md
-
+```
 In the last step you will have to open the .env and put in your
 discord token, discord channel id, rcon ip ("rcon_host"),
 rcon_password, the rcon port(both of these HAVE to be the same as in
