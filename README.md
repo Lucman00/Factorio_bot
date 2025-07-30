@@ -21,12 +21,14 @@ A Discord bot for managing Factorio game servers via RCON with real-time status 
   - logs connections to rcon and any errors inside the "logs" folder
 
 ## Prerequisites
+```
 - Python 3.10+
-- rcon-source   ┐
-- python-dotenv ┤━ ━ ```pip install -r requirements.txt```
-- discord.py    ┘
+- rcon         ━┐
+- python-dotenv ┤━pip install -r requirements.txt
+- discord.py   ━┘
 - Factorio server with RCON enabled
 - Discord bot token 
+```
 ## Installation
 
 First of all, your server.bat should look something like this
