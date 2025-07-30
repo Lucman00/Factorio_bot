@@ -1,4 +1,27 @@
 
+# Factorio server discord Bot
+
+A Discord bot for managing Factorio game servers via RCON with real-time status monitoring.
+
+![Control Panel Example](https://imgur.com/gallery/control-panel-example-77Cf6hF)
+## Features
+
+- **Server Control**:
+    - Start/Stop server with buttons
+    - Manual save triggering
+    - Status updates every 25 seconds (Adjustable)
+- **User Management**:
+  - A Role-based permission system (Default: only "Factorio" roles can interact with the server panel
+  - Shows player list
+  - Admin-only commands
+
+- **Technical**:
+  - logs connections to rcon and any errors inside the "logs" folder
+
+## Prerequisites
+- Python 3.10+
+- Factorio server with RCON enabled
+- Discord bot token
 ## Installation
 
 First of all, your server.bat should look something like this
