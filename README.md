@@ -40,7 +40,7 @@ pause
 Important here is the rcon-port and passwordas that allows the bot to communicate with the server. 
 
 Then you can download the bot itself
-#### Method 1: Using Git Clone (*Recommended*)
+#### Method 1: Using Git Clone 
  ```bash
 git clone https://github.com/Lucman00/Factorio_bot.git
 cd factorio-discord-bot
