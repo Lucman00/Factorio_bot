@@ -19,7 +19,6 @@ class ServerController:
             subprocess.Popen(
                 [str(Config.SERVER_BAT)],  # Full path to bat file
                 cwd=Config.SERVER_PATH,    # Run from server directory
-                shell=True,
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
             )
             return True
