@@ -70,8 +70,7 @@ class Config:
         if not cls.SERVER_PATH.exists():
             raise ValueError(f"Server path not found: {cls.SERVER_PATH}")
             
-        if not cls.SERVER_BAT.exists():
-            raise ValueError(f"server.bat not found at {cls.SERVER_BAT}")
+        
         
         cls.SAVE_GAMES_DIR.mkdir(exist_ok=True)
 

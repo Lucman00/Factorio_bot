@@ -1,0 +1,22 @@
+2025-08-04 09:02:26,747 - factorio_bot - CRITICAL - Bot crashed: Server path not found: /home/under/Documents/Projects/Factorio_bot/~/Documents/Projects/factorio
+Traceback (most recent call last):
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/bot.py", line 133, in run_bot
+    bot = FactorioBot()
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/bot.py", line 39, in __init__
+    Config.validate()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/config.py", line 71, in validate
+    raise ValueError(f"Server path not found: {cls.SERVER_PATH}")
+ValueError: Server path not found: /home/under/Documents/Projects/Factorio_bot/~/Documents/Projects/factorio
+2025-08-04 09:03:28,137 - factorio_bot - CRITICAL - Bot crashed: server.bat not found at /home/under/Documents/Projects/factorio/server.bat
+Traceback (most recent call last):
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/bot.py", line 133, in run_bot
+    bot = FactorioBot()
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/bot.py", line 39, in __init__
+    Config.validate()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/under/Documents/Projects/Factorio_bot/factorio_bot/config.py", line 74, in validate
+    raise ValueError(f"server.bat not found at {cls.SERVER_BAT}")
+ValueError: server.bat not found at /home/under/Documents/Projects/factorio/server.bat
+2025-08-04 09:04:40,734 - factorio_bot - INFO - Logged in as Factorio_bot_alt#9843
+2025-08-04 09:06:38,259 - factorio_bot - INFO - Shutting down...
