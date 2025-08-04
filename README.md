@@ -31,20 +31,6 @@ A Discord bot for managing Factorio game servers via RCON with real-time status 
 ```
 ## Installation
 
-First of all, your server.bat should look something like this
-
-```bash
-start /wait bin\x64\factorio.exe --start-server saves\[save file.zip] ^
---server-settings "server-settings.json" ^
---port [your chosen factorio port] ^
---rcon-port [your chosen rcon-port] ^
---rcon-password [your chosen rcon-password] ^
---no-log-rotation
-pause
-```
-Important here is the rcon-port and passwordas that allows the bot to communicate with the server. 
-
-Then you can download the bot itself
 #### Method 1: Using Git Clone 
  ```bash
 git clone https://github.com/Lucman00/Factorio_bot.git
@@ -74,15 +60,14 @@ Factorio_bot
 │   ├──config.py
 │   ├──constants.py
 │   └──exceptions.py
-├──.env    [this is the file you'll have to put your discord token and directory into]
+├──example.env.txt
 ├──main.py [this is the file you'll be running]
+├──requirements.txt
 └──README.md
 ```
-In the last step you will have to open the .env and put in your
-discord token, discord channel id, rcon ip ("rcon_host"),
-rcon_password, the rcon port(both of these HAVE to be the same as in
-the bat file) and lastly your server_path. 
-
+next to the main.py, you'll create ```.env```, with the ```example.env.txt``` as a template for it (just copy paste it in)
+once that's done you can fill out the fields inside of the ```.env```
+    make sure that anything you fill in doesn't have a space infront |```DISCORD_TOKEN= [ETC]``` is wrong ```DISCORD_TOKEN=[ETC]``` is correct. no [""]. once thats done, you should be able to run the bot 
 
 
 ## Disclaimer, Feedback and suggestions

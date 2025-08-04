@@ -1,6 +1,6 @@
 from typing import Tuple
 from datetime import datetime
-import time
+from ..config import Config
 from ..R_con import RCONClient, RCONCommands
 from .models import ServerStatus
 from ..exceptions import RCONError
@@ -13,20 +13,8 @@ class ServerMonitor:
     
     @staticmethod
     def get_world_name() -> str:
-        """Safely get world name with fallback"""
-        try:
-            # First try the direct RCON command
-            world_name = RCONClient.send(RCONCommands.server_info())
-            if world_name and not world_name.startswith("Error"):
-                return world_name.strip()
-            
-            # Fallback to alternative command if first fails
-            world_name = RCONClient.send("/silent-command rcon.print(game.connected_players[1].surface.name)")
-            return world_name.strip() if world_name else "Unknown World"
-            
-        except Exception as e:
-            logger.warning(f"Failed to get world name: {e}")
-            return "Factorio World"  # Default fallback name
+        """Get the current world name from config"""
+        return Config.CURRENT_WORLD_NAME or "Unknown World"
 
     @staticmethod
     def get_status() -> ServerStatus:
@@ -47,7 +35,7 @@ class ServerMonitor:
             
             return ServerStatus(
                 online=True,
-                world_name=ServerMonitor.get_world_name(),
+                world_name=ServerMonitor.get_world_name(),  # Use our simplified method
                 players=players,
                 last_updated=datetime.now()
             )

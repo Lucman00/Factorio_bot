@@ -21,8 +21,8 @@ class RCONCommands:
     
     @staticmethod
     def server_info() -> str:
-        """Get server metadata"""
-        return "/silent-command rcon.print(game.name)"  # Returns world name
+        """DEPRECATED - World name now comes from save file"""
+        return ""
     
     @staticmethod
     def message(msg: str) -> str:

@@ -1,8 +1,40 @@
 import discord
-from discord.ui import Button, View
-from ..constants import ButtonIDs
+from discord.ui import View, Select, Button
+from typing import Optional
+from pathlib import Path
+from ..config import Config
 from ..server.controller import ServerController
-from ..exceptions import ServerControlError
+from ..constants import ButtonIDs
+from ..utils.logging_utils import logger
+
+class SaveSelectView(View):
+    def __init__(self, saves: list[tuple[Path, str]]):
+        super().__init__()
+        options = [
+            discord.SelectOption(
+                label=name,
+                value=str(i)  # Store index
+            ) for i, (_, name) in enumerate(saves)
+        ]
+        
+        self.select = Select(
+            placeholder="Choose a save file...",
+            options=options[:25]  # Discord limits to 25 options
+        )
+        self.select.callback = self.on_select
+        self.add_item(self.select)
+        
+        self.selected_save: Optional[Path] = None
+        self.selected_save_name: Optional[str] = None
+        self.saves = saves
+
+    async def on_select(self, interaction: discord.Interaction):
+        selected_index = int(self.select.values[0])
+        self.selected_save = self.saves[selected_index][0]
+        self.selected_save_name = self.saves[selected_index][1]  # Store display name
+        await interaction.response.defer()
+        self.stop()
+
 
 class ServerControlView(View):
     """Persistent server control buttons"""
@@ -68,11 +100,32 @@ class ServerControlView(View):
                 ephemeral=True
             )
 
-    async def _handle_start(self, interaction: discord.Interaction) -> None:
-        """Start server button handler"""
-        await interaction.response.defer(ephemeral=True, thinking=True)
-        ServerController.start_server()
-        await interaction.followup.send("🚀 Server starting... This may take a minute.")
+    async def _handle_start(self, interaction: discord.Interaction):
+        saves = Config.get_all_saves()
+        if not saves:
+            await interaction.response.send_message(
+                "❌ No save files found!", 
+                ephemeral=True
+            )
+            return
+
+        view = SaveSelectView(saves)
+        await interaction.response.send_message(
+            "Select a save file to load:",
+            view=view,
+            ephemeral=True
+        )
+        
+        # Wait for selection
+        await view.wait()
+        if view.selected_save:
+            Config.CURRENT_WORLD_NAME = view.selected_save_name
+            await interaction.followup.send(
+                f"🚀 Starting server with {view.selected_save.name}...",
+                ephemeral=True
+            )
+            ServerController.start_server(view.selected_save)
+
 
     async def _handle_save(self, interaction: discord.Interaction) -> None:
         """Manual save button handler"""

@@ -1,5 +1,6 @@
 from functools import wraps
 import discord
+import logging
 from discord.ext import commands
 from ..exceptions import FactorioBotError
 
