@@ -13,20 +13,19 @@ class Config:
     
     CURRENT_WORLD_NAME: str = None
 
-    # RCON
     RCON_HOST: str = os.getenv("RCON_HOST", "127.0.0.1")
     RCON_PORT: int = int(os.getenv("RCON_PORT", "27015"))
     RCON_PASSWORD: str = os.getenv("RCON_PASSWORD", "password")
     
-    # Bot Settings
+    # bot settings
     COMMAND_PREFIX: str = os.getenv("COMMAND_PREFIX", "!")
     STATUS_UPDATE_INTERVAL: int = int(os.getenv("STATUS_UPDATE_INTERVAL", "25"))
 
-    # Game port (obviously)
+
     GAME_PORT : int = int(os.getenv("GAME_PORT", "34197"))
 
     
-    # Paths (with validation)
+
     SERVER_PATH: Path = Path(os.getenv("SERVER_PATH", ".")).absolute()
     SERVER_BAT: Path = SERVER_PATH / "server.bat"
     SAVE_GAMES_DIR: Path = (SERVER_PATH / os.getenv("SAVE_GAMES_DIR", "saves")).absolute()

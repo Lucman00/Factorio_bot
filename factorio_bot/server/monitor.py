@@ -1,4 +1,3 @@
-from typing import Tuple
 from datetime import datetime
 from ..config import Config
 from ..R_con import RCONClient, RCONCommands
@@ -23,10 +22,10 @@ class ServerMonitor:
         Returns: ServerStatus object with current state
         """
         try:
-            # Get basic info
+
             players_raw = RCONClient.send(RCONCommands.players())
             
-            # Parse player list
+
             players = [
                 line.strip() 
                 for line in players_raw.split('\n') 

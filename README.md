@@ -67,12 +67,10 @@ Factorio_bot
 ```
 next to the main.py, you'll create ```.env```, with the ```example.env.txt``` as a template for it (just copy paste it in)
 once that's done you can fill out the fields inside of the ```.env```
-    make sure that anything you fill in doesn't have a space infront |```DISCORD_TOKEN= [ETC]``` is wrong ```DISCORD_TOKEN=[ETC]``` is correct. no [""]. once thats done, you should be able to run the bot 
+    make sure that anything you fill in doesn't have a space in front |```DISCORD_TOKEN= [ETC]``` is wrong ```DISCORD_TOKEN=[ETC]``` is correct. no [""]. once thats done, you should be able to run the bot 
 
 
-## Disclaimer, Feedback and suggestions
-First of all, this is my first ever real project and first time making a discord bot. 
-A LOT of it was done with AI on my second monitor and often times copy-paste from it.
-
-If you have any Feedback, suggestions and or problems with the Bot, you can add me on Discord at ```luca1811```.
-Just make sure you mention that it is about the bot, i've been getting a lot of art scam DMs
+## Disclaimer
+First of all, this is my first ever real project and first time making a discord bot.
+This whole project initially was prototyped with Ai, getting the whole idea into code,
+before then modifying it to fit what we needed at the time. This modification was version 1.1

@@ -1,10 +1,9 @@
 import asyncio
 import discord
 from discord.ext import commands
-from pathlib import Path
 from typing import Optional
 
-# Local imports
+
 from .R_con.client import RCONClient
 from .R_con.commands import RCONCommands
 from .server.monitor import ServerMonitor
@@ -35,10 +34,11 @@ class FactorioBot(commands.Bot):
         self.status_message: Optional[discord.Message] = None
         self.panel_lock = asyncio.Lock()
         
-        # Verify configuration
+
         Config.validate()
-        
-        # Register events and commands
+
+
+
         self._register_events()
         self._register_commands()
 
