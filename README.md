@@ -71,6 +71,4 @@ once that's done you can fill out the fields inside of the ```.env```
 
 
 ## Disclaimer
-First of all, this is my first ever real project and first time making a discord bot.
-This whole project initially was prototyped with Ai, getting the whole idea into code,
-before then modifying it to fit what we needed at the time. This modification was version 1.1
+This was my first real project and first Discord bot. I learned as I built it — including working with RCON, asynchronous tasks, and role-based permissions. Feedback and contributions are welcome.
