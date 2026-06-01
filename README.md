@@ -71,4 +71,4 @@ once that's done you can fill out the fields inside of the ```.env```
 
 
 ## Disclaimer
-This was my first real project and first Discord bot. I learned as I built it — including working with RCON, asynchronous tasks, and role-based permissions. Feedback and contributions are welcome.
+This was my first real project and first Discord bot. I learned as I built it, including working with RCON, asynchronous tasks, and role-based permissions. Feedback and contributions are welcome.
