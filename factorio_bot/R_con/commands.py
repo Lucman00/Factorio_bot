@@ -17,13 +17,7 @@ class RCONCommands:
     @staticmethod
     def players() -> str:
         """List connected players"""
-        return "/players"
-    
-    @staticmethod
-    def server_info() -> str:
-        """DEPRECATED - World name now comes from save file"""
-        return ""
-    
+        return "/players" 
     @staticmethod
     def message(msg: str) -> str:
         """Broadcast message to all players"""
