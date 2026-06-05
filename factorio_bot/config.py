@@ -19,7 +19,7 @@ class Config:
     
     # bot settings
     STATUS_UPDATE_INTERVAL: int = int(os.getenv("STATUS_UPDATE_INTERVAL", "25"))
-
+    COMMAND_PREFIX: str = os.getenv("COMMAND_PREFIX", "!")
 
     GAME_PORT : int = int(os.getenv("GAME_PORT", "34197"))
 
