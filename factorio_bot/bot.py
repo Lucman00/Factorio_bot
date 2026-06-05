@@ -22,7 +22,6 @@ class FactorioBot(commands.Bot):
     
     def __init__(self):
         intents = discord.Intents.default()
-        intents.message_content = True
         
         super().__init__(
             command_prefix=Config.COMMAND_PREFIX,
@@ -46,12 +45,6 @@ class FactorioBot(commands.Bot):
         """Register all Discord event listeners"""
         self.event(self.on_ready)
 
-    #async def on_interaction(self, interaction: discord.Interaction):
-        #"""Handle all interactions (like button clicks)"""
-        #if interaction.type == discord.InteractionType.component:
-            # Let the view handle the interaction
-            #view = ServerControlView()
-            #await view._handle_interaction(interaction
     def _register_commands(self) -> None:
         """Register all text commands"""
         @self.command(name='status')

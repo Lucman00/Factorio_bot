@@ -18,7 +18,6 @@ class Config:
     RCON_PASSWORD: str = os.getenv("RCON_PASSWORD", "password")
     
     # bot settings
-    COMMAND_PREFIX: str = os.getenv("COMMAND_PREFIX", "!")
     STATUS_UPDATE_INTERVAL: int = int(os.getenv("STATUS_UPDATE_INTERVAL", "25"))
 
 
@@ -27,7 +26,7 @@ class Config:
     
 
     SERVER_PATH: Path = Path(os.getenv("SERVER_PATH", ".")).absolute()
-    SERVER_BAT: Path = SERVER_PATH / "server.bat"
+    
     SAVE_GAMES_DIR: Path = (SERVER_PATH / os.getenv("SAVE_GAMES_DIR", "saves")).absolute()
 
     @classmethod
