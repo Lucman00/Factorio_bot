@@ -9,7 +9,6 @@ class ServerController:
     @staticmethod
     def start_server(save_file: Path) -> bool:
         try:
-            factorio = Config.get_factorio_binary()
 
             cmd = [
                 str(Config.get_factorio_binary()),

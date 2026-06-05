@@ -22,7 +22,6 @@ class FactorioBot(commands.Bot):
     
     def __init__(self):
         intents = discord.Intents.default()
-        intents.message_content = True
         
         super().__init__(
             command_prefix=Config.COMMAND_PREFIX,
@@ -46,13 +45,6 @@ class FactorioBot(commands.Bot):
         """Register all Discord event listeners"""
         self.event(self.on_ready)
 
-    async def on_interaction(self, interaction: discord.Interaction):
-        """Handle all interactions (like button clicks)"""
-        if interaction.type == discord.InteractionType.component:
-            # Let the view handle the interaction
-            view = ServerControlView()
-            await view._handle_interaction(interaction)
-
     def _register_commands(self) -> None:
         """Register all text commands"""
         @self.command(name='status')
@@ -75,9 +67,10 @@ class FactorioBot(commands.Bot):
             players = RCONClient.send(RCONCommands.players())
             await ctx.send(f"**Players:**\n```{players or 'None'}```")
 
-    async def on_ready(self) -> None:
+    async def on_ready(self):
         """Bot startup handler"""
         logger.info(f'Logged in as {self.user}')
+        self.add_view(ServerControlView())
         
         # Load persisted state
         load_state()
@@ -88,7 +81,7 @@ class FactorioBot(commands.Bot):
         # Start status updater
         self.status_updater = StatusUpdater(self)
 
-    async def _ensure_single_panel(self) -> None:
+    async def _ensure_single_panel(self):
         """Guarantee exactly one control panel exists"""
         async with self.panel_lock:
             channel = self.get_channel(Config.CHANNEL_ID)
@@ -115,7 +108,7 @@ class FactorioBot(commands.Bot):
             status = ServerMonitor.get_status()
             self.status_message = await channel.send(
                 embed=generate_status_embed(status),
-                view=ServerControlView()
+                view=ServerControlView(self)
             )
             Config.PANEL_MESSAGE_ID = self.status_message.id
             save_state()

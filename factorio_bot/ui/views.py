@@ -2,8 +2,13 @@ import discord
 from discord.ui import View, Select, Button
 from typing import Optional
 from pathlib import Path
+import asyncio
+from ..R_con.client import RCONClient
+from ..R_con.commands import RCONCommands
 from ..config import Config
 from ..server.controller import ServerController
+from ..ui.embeds import generate_status_embed
+from ..server.monitor import ServerMonitor
 from ..constants import ButtonIDs
 from ..utils.logging_utils import logger
 
@@ -39,37 +44,45 @@ class SaveSelectView(View):
 class ServerControlView(View):
     """Persistent server control buttons"""
     
-    def __init__(self):
+    def __init__(self, bot=None):
         super().__init__(timeout=None)
         self._setup_buttons()
+        self.bot = bot
+        
     
     def _setup_buttons(self) -> None:
         # Start Button
-        self.add_item(Button(
+        start_button = Button(
             style=discord.ButtonStyle.green,
             label="Start Server",
             emoji="🟢",
             custom_id=ButtonIDs.START_SERVER.value,
             row=0
-        ))
-        
+        )
+
         # Save Button
-        self.add_item(Button(
+        save_button = Button(
             style=discord.ButtonStyle.blurple,
             label="Save Game",
             emoji="💾",
             custom_id=ButtonIDs.MANUAL_SAVE.value,
             row=0
-        ))
+        )
         
         # Stop Button
-        self.add_item(Button(
+        stop_button = Button(
             style=discord.ButtonStyle.red,
             label="Stop Server",
             emoji="🛑",
             custom_id=ButtonIDs.STOP_SERVER.value,
             row=0
-        ))
+        )
+        start_button.callback = self._handle_start
+        save_button.callback = self._handle_save
+        stop_button.callback = self._handle_stop
+        self.add_item(start_button)
+        self.add_item(save_button)
+        self.add_item(stop_button)
     
     async def interaction_check(self, interaction: discord.Interaction) -> bool:
         """Global permission check"""
@@ -125,6 +138,15 @@ class ServerControlView(View):
                 ephemeral=True
             )
             ServerController.start_server(view.selected_save)
+            for _ in range(24):
+                await asyncio.sleep(5)
+                try:
+                    RCONClient.send(RCONCommands.players())
+                except Exception as e:
+                    print("Offline")
+                status = ServerMonitor.get_status()
+                if status.online:
+                    break
 
 
     async def _handle_save(self, interaction: discord.Interaction) -> None:
@@ -137,4 +159,5 @@ class ServerControlView(View):
         """Stop server button handler"""
         await interaction.response.defer(ephemeral=True, thinking=True)
         ServerController.stop_server()
-        await interaction.followup.send("🛑 Server shutdown initiated.")
+
+        await interaction.followup.send("🛑 Server shutdown initiated.") 
